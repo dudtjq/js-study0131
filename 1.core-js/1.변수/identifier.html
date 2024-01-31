@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+    <script>
+
+        // 식별자는 중복이 되어서는 아니된다.
+        // 자바스크립트에서 var로 변수를 선언 시 에러가 나지 않음 주의 해야함!
+        var apple = '사과';
+        var apple = '애플';
+        console.log(apple);
+
+
+        // 식별자의 이름은 대소문자를 철저하게 구분함
+        var banana = '바나나';
+        var BANANA = '빠나나';
+        console.log(banana);
+        console.log(BANANA);
+        
+        // 식별자는 숫자로만 이루어지거나 숫자로 시작하면 안됨
+        // var 700 = 365; x
+        // var 7qwe = 1; x
+
+        //식별자는 특수기호가 불가능 합니다.
+        // $, _는 가능함(사용하기로 한 곳이 약속되어 있음)
+        // var my-name = ''; x
+        var myName = 'leeyoungseop'; // 주로 이걸 많이 사용함 (카멜 케이스)
+        var my_name = '';
+
+        var myPhoneNumber = '01012345678'; //camel
+        var my_phone_number = '01012345678'; //snake
+        var MyPhoneNumber = '01012345678'; //pascal
+        var strMyPhoneNumber = '01012345678'; //Hungarian
+
+        // 식별자 이름을 한글 혹은 영어 이외의 언어로 작성하는 건 에러는 아니지만
+        // 별로 권장하지 않는다.
+        var 과일 = '오렌지';
+
+       
+    </script>
+    
+</body>
+</html>

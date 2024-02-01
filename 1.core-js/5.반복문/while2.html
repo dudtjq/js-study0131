@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        // 48 부터 150 사이의 정수 중 8의 배수 출력
+
+       // var number = 48;
+
+        // while(number <= 150){
+            
+        //     if(numebr % 8 === 0){
+        //         console.log(number);
+        //     }
+
+        //     number++;
+        // }
+            
+        // while(number <= 150){
+        //     console.log(number);
+        //     number += 8;
+        // }
+
+        console.log('-----------------------------');
+
+        // 1000의 약수의 개수
+
+        var number = 1;
+        var count = 0;
+
+        while(number <= 1000){
+
+            if(1000 % number === 0){
+                count++;   
+            }
+
+            number++;
+        }
+        console.log(count);
+        
+        /*
+         # 사용자에게 구구단 단수를 입력받아서
+         해당 단수의 구구단을 출력해 보세요.
+         ex)
+         
+         구구단을 입력하세요: 4
+         *** 구구단 4 단 ***
+         4 x 1 = 4
+         4 x 2 = 8
+         4 x 3 = 12
+         4 x 4 = 16 
+         .
+         .
+         .
+         4 x 9 = 36
+         */
+        
+        var number1 = +prompt('구구단을 입력하세요 : ');
+        var number2 = 1;
+    
+        while(number2 <= 9){
+
+            console.log(`${number1} x ${number2} = ${number1 * number2}`);
+
+            number2++;
+
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

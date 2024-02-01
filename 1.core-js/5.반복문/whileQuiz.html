@@ -25,16 +25,17 @@
         var x = +prompt('첫번째 입력 : ');
         var y = +prompt('두번째 입력 : ');
 
-        var number3 = 1;
+        var number3 = 0;
         var sum = 0;
     
-        var tmp = x;
-        x === y;
-        y === tmp
+        if(x > y){
+            var temp = y;
+            y = x;
+            x = temp;
+        }
         while(number3 <= 5){
             
-            sum += x;
-            x++;
+           sum += temp;
           
             number3++;
         }

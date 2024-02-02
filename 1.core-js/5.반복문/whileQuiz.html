@@ -25,21 +25,23 @@
         var x = +prompt('첫번째 입력 : ');
         var y = +prompt('두번째 입력 : ');
 
-        var number3 = 0;
-        var sum = 0;
-    
+        var n = x;
+        var u = y;
+        
         if(x > y){
-            var temp = y;
+            var tmp = y;
             y = x;
-            x = temp;
+            x = tmp;
         }
-        while(number3 <= 5){
-            
-           sum += temp;
+
+        var sum = 0;
+        while(x <= y){
+
+           sum += x;
           
-            number3++;
+            x++;
         }
-        console.log('3부터 7까지의 누적합계:' + sum);
+        console.log(`${n}부터 ${u}까지의 누적합계:` + sum);
 
     </script>
 

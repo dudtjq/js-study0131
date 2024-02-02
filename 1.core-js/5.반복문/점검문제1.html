@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+
+        // var rm = Math.floor(Math.random() * 77) + 135  
+
+        // 1 ~ 100 사이의 랜덤한 숫자하나가 정답으로 주어진다.
+        // 사용자는 이 사이의 숫자를 입력할 수 있어야 한다.
+        // 시스템은 입력한 숫자 를 판단하여 up인지 down인지 알려줘야 한다.
+        // 만약 정답을 맞추지 못하면 지속해서 입력을 받고 결과를알려준다.
+        // 정답을 맞추면 맞췄다는 메시지와 함께 프로그램을 종료한다.
+
+        // 사용자들은 입력 기회가 5번으로 제한된다.
+        // 즉, 5번 안에 정답을 맞추지 못할 경우 게임이 강제종료된다.
+
+        // 사용자는 게임 시작전에 난이도를 설정할 수 있다.
+        // 난이도는 상, 중, 하 난이도가 존재하며
+        // 난이도별 입력 횟수제한이 다르다.
+
+        // 상 3번 중 6번 하 10번
+
+        var level = +prompt('난이도를 선택하시오.\n | 1.상 3번 | 2.중 6번 | 3.하 10번 |');
+        
+        // 변수 선언(난이도에 따른 기회 갯수) 
+        var count;
+        
+        // 난이도 조정
+        if(level === 1){
+            count = 3; // 상
+        }else if(level === 2){
+            count = 6; // 중
+        }else if(level === 3){
+            count = 10;// 하
+        }else{
+            alert('난이도 조정을 실패하여 중으로 임의 조정 됩니다');
+            count = 6;
+        }
+
+        // 카운트 다운 변수
+        var countDown = count;
+
+        // 실제 정답 정수
+        var rm = Math.floor(Math.random() * 100) + 1  
+        // console.log(rm);
+
+        // 입력값의 최대 , 최소
+        var max = 100;
+        var min = 1;
+
+        while(true){
+
+            answer = +prompt(`숫자를 입력하시오 [${min} ~ ${max}]`);
+
+            // 입력값 유효성 검사
+            // 지금 입력한 값이 유효 범위 인지 확인
+            if(answer < min || answer > max){
+                alert('유효범위가 아닙니다. 제대로 작성해 주세요');
+                continue;
+            }
+
+            countDown--;
+
+            if(rm === answer){
+                alert(`정답입니다! ${count - countDown}번 만에 맞추셨네요~`);
+                break;
+            }else if(rm > answer){
+                alert('UP!');
+                min = answer + 1;
+            }else{
+                alert('DOWN');
+                max = answer - 1;
+            }
+
+            if(countDown === 0){
+                alert(`틀리셨습니다 정답은 ${rm}이였습니다~~`);
+                break;
+            }else{
+                alert(`아직 ${countDown} 만큼 남았습니다!`);
+            }
+
+        }
+
+        alert('고생하셨습니다~');
+        
+    
+        
+
+
+
+    </script>
+
+    
+</body>
+</html>

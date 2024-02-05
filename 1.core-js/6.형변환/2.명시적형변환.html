@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+   
+        // 문자열이 아닌 값을 문자열로 변환하는 방법
+        var a = 10 , b = 20;
+
+        // 첫번째 방법
+        var result = a + String(b);
+        console.log(typeof result); 
+        // 두번째 방법
+        result = a.toString(); + b.toString();
+        console.log(typeof result);
+
+
+        //숫자가 아닌 값을 숫자타입으로 변환 하는 법
+        var c = '10' , d = '3.14';
+
+        //첫번째 방법
+        result = Number(c) + Number(d);
+        console.log(typeof result);
+
+        // 두번째 방법
+        //         정수           실수
+        result = parseInt(c) + parseFloat(d);
+        console.log(typeof result);
+
+        //논리 타입이 아닌 값을 논리 타입으로 변환 하는 법
+        // 첫번째 방법
+        var t = 'Hello' ,  f = '';
+        // true
+        console.log(Boolean(t));
+        // false
+        console.log(Boolean(f));
+       
+        // 두번째 방법
+        // true
+        // 논리 반전 연산자를 이용하여 문자열 'Hello' 값을 논리형으로 변환 -> not true -> false
+        // false 값을 다시 한번 반전 - > not false  -> true 
+        console.log(!!'Hello');
+
+
+    </script>
+    
+</body>
+</html>

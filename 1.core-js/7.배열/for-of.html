@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var week = ['월', '화', '수', '목', '금', '토', '일',];
+
+        // for(let i = 0; i < week.length; i++){   
+
+        //     console.log(week[i] + '요일');
+
+        // }
+
+
+        // for of 문 : 베열 내부를 전체 순회하여 요소를 하나씩 가져올 수 있음
+        // for(배열 요소 받을 변수 of 배열 이름) {}인덱스를 사용하지 않음 
+        for(let day of week){
+            console.log(day + '요일');
+        }
+
+        console.log('---------------------');
+
+
+        // index 확인
+        // for in : 배열이나 객체의 index 혹은 key값을 변수에 저장
+        for(let days in week){
+            console.log(days + '요일');
+        } 
+
+
+
+
+    </script>
+
+</body>
+</html>

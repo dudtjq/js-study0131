@@ -44,6 +44,44 @@
         dog.favorite.push('고기');
         console.log(dog);
 
+        console.log('------------------');
+
+        // 프로퍼티 참조 다른 방식
+        console.log(dog.kind);
+        console.log(dog['kind']);
+
+        // 프로퍼티 값 수정
+        dog.age = 5;
+        cat.favorite[1] = '냥냥펀치';
+        console.log(dog);
+        console.log(cat.favorite);
+
+        console.log('---------------------');
+
+        // 프로퍼티 동적 추가
+        dog.owner = '이영섭';
+        console.log(dog);
+
+        // 프로퍼티 삭제
+        delete dog.owner;
+        console.log(dog);
+
+        // fot ~ in (ES6)
+        for(var key in cat){
+            console.log(`key : ${key} , value : ${cat[key]}`);
+        }
+
+        // 객체의 프로퍼티 키의 존재 유무 확인(in 키워드)
+        // 객체 안에 있는 key 가 있다면 true를 보여주고
+        // 객체 안에 해당 key가 없다면 false를 보여준다.
+        var flag = 'owner' in cat;
+        // true
+        console.log(flag);
+
+    
+
+
+
     </script>
 
 

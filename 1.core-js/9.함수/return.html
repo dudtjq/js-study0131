@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function add(n1, n2){
+            return n1 + n2;
+        }
+
+
+        console.log(add(3, 7));
+        console.log(add(9,4));
+        // 리턴값이 있는 함수 호출문은 다른 함수와 매개값으로도 사용이 가능
+        // 함수 중첩 호출은 인쪽부터 실행, 같은 라인이면 왼쪽부터 호출
+        console.log(add(add(5,5), add(8,6)));
+
+        // void 함수 : 리턴값이 없는 함수.
+        // void 함수는 단독 호출로 사용. 다른 함수의 인자(매개값)으로
+        // 전달이 불가능하다.
+        function greeting(nick){
+            var badNick = ['멍청이', '바보', '쓰레기', '애송이'];
+            if(badNick.includes(nick)){
+                console.log('사용할 수 없는 닉네임 입니다.');
+                // return 키워드는 함수의 호출부로 값을 반환 하는 역할도 있지만,
+                // 함수를 강제로 종료하는 역할도 있다.
+                return;
+                // return을 만났으니 이 부분 부턴 실행이 되지 않음
+                // console.log('return을 만났으니 이 부분 부턴 실행이 되지 않음'); 
+            }
+            console.log(nick + '님 안녕하세요~');
+        }
+
+        greeting('애송이');
+        //var result = greeting('세상은날억');
+        //console.log(result); // void 는 반환값이 없다(undefined)
+
+        // 다중 리턴
+        // 리턴 키워드를 여러개 쓸 수가 없음
+        // 배열 또는 객체를 이용하여 값을 한 번에 리턴할 수 있다.
+        function operateAll(n1, n2){
+
+            // return n1 + n2;
+            // return n1 - n2;
+            // return n1 * n2;
+            // return n1 / n2;
+            // return n1 % n2;
+
+            // return [
+            // n1 + n2, n1 - n2, n1 * n2 , n1 / n2, n1 % n2
+            // ]
+
+            return {
+                plus : n1 + n2,
+                minus : n1 - n2,
+                multy : n1 * n2,
+                divide : n1 / n2,
+                mod : n1 % n2
+            }
+
+    
+        }
+
+        var result = operateAll(10, 2);
+        console.log(result);
+
+
+
+    </script>
+
+
+</body>
+</html>

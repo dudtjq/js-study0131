@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var z = 'hello'; // 전역 변수 (global) 
+
+    // 즉시 실행 함수 (정의와 동시에 실행되는 함수)\
+    // 일회용임 다시 부를 수 없음
+    (function(x,y){
+      console.log(`x + y = ${x + y}`);
+    })(60, 70);
+
+    // 재귀 함수
+    // 함수 내에서 자기 자신을 다시 호출하여 작업을 수행하는 함수
+    // 종료 조건을 직접 작성해야 한다
+    console.log('----------------------------');
+
+    function countDown(number){
+      // 종료 조건
+      if(number < 0){
+        return;
+      }
+      console.log(number);
+      countDown(number - 1);
+    }
+
+    countDown(5);
+
+    console.log('----------------------------');
+    function factorial(number2){
+      if(number2 === 1){
+        return 1;
+      }
+      return number2 * factorial(number2 - 1);
+
+    }
+
+    console.log(factorial(6));
+
+    console.log('----------------------------');
+
+    //중첩 함수 : 함수 안에 함수를 또 정의한 형태
+    function outer(){
+      var x = 1; // outer 함수 내에서만 사용 가능한 지역 변수
+
+      // 헬퍼 함수
+      function inner(){ 
+        var y = 2; // inner 함수 내에서만 사용 가능한 지역 변수
+        console.log(`x + y = ${x + y}`);
+      }
+
+      inner(); // outer함수 내에서만 사용이 가능
+      // console.log(y); (X)  y는 inner 내에서만 유효함
+    }
+
+    outer();
+
+    // inner(); - > outer 함수 내에 선언된 함수 - > outer를 호출 하지 않으면 애초에 존재하지 않는 함수
+    // console.log(y); (X) y는 inner 내에서만 유효함
+    // console.log(x); (X) x는 outer 내에서만 유효함
+    console.log(z);
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+</body>
+</html>

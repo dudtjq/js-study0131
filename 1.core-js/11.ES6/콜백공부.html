@@ -40,26 +40,17 @@
         },
       ];
 
-        
 
         // 직업을 배열에 담아 출력해보기
+       const jobs = userList.map(user => user.job)
+       console.log(jobs);
 
-        function fillter(){
+       // 사는 곳이 서울이고 취미가 3개 이상인 사람을  배열에 담아 출력해보기
 
-          const arr = [];
-          for(let list of userList){
-
-            arr.push(list.job);
-
-          }
-          return arr;
-        }
-  
-        const result =  fillter();
-        console.log(result);
-
-
-      
+       const usersInfo = userList
+        .filter(user => user.address ==='서울' && user.hobbys.length >= 3)
+        .map(user => user.userName)
+      console.log(usersInfo);
 
 
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    const emp = {
+
+      empName : '뽀로로',
+      age : 4,
+      hireDate : '2021-01-01',
+      birthDay : '2020-02-08'
+    };
+
+    const {empName, birthDay ,age} = emp;
+    console.log(`${empName}, ${age}, ${birthDay}`);
+
+    const {empName: en, birthDay: bi ,age: ag} = emp;
+    console.log(`${en}, ${ag}, ${bi}`);
+    console.log('--------------------------');
+
+    const {birthDay:bDay, ...othes} = emp;
+    console.log(othes);
+
+    // 객체 복사
+    const copyEmp = {
+      ...emp,
+      address : '마포구',
+      hobbies : ['산책', '수영'],
+      age : 17
+    };
+    console.log(copyEmp);
+    console.log(emp);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+</body>
+</html>

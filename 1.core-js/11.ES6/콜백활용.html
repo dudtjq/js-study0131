@@ -92,22 +92,23 @@
 
     // 회원 정보중 회원 이름만 전부 모아서 배열에 담기
 
-    function fillter(condition){
+    function map(callback){
 
-      const fillterList = [];
+      const mapArray = [];
       for(let user of userList){
         
-          fillterList.push(user.userName);
+        mapArray.push(callback(user));
         
       }
-      return fillterList;
+      return mapArray;
 
       }
-    const result3 = fillter();
+    const result3 = map(user => user.userName);
     console.log(result3);
 
-   
-
+    // 주소만 모아서 배열에 담아 두기
+   const result4 = map(user => user.address);
+   console.log(result4);
 
 
 

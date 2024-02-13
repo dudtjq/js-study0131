@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <ul id="fruits">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Grape</li>
+  </ul>
+
+
+  <script>
+
+    const $fruits = document.getElementById('fruits');
+
+    /*
+    const $children = $fruits.children;
+    const $apple = $children[0];
+    const $banana = $children[1];
+    const $grape = $children[2];
+    */
+
+    // 배열 destructuring
+    const [$apple, $banana, $grape] = [...$fruits.children]; // children은 유사 배열이라서 순수 배열로 변경을 해줌
+
+    const $mango = document.createElement('li');
+    $mango.textContent = 'Mango';
+
+    // 맨 마지막에 요소 추가
+    $fruits.appendChild($mango);
+
+    // 이미 존재하는 요소를 appendChild 를 하게 되면 맨 마지막으로 이동함
+    $fruits.appendChild($banana);
+
+    // insertBofore 도 마찬가지로 기존 요소를 이동시킬 수 있다.
+    $fruits.insertBefore($apple, $mango);
+
+    // grape를 맨 마지막 노드 바로 앞으로 옮기기
+    // apple mango grape banana 가 되어야함
+   // $fruits.insertBefore($grape, $banana);
+   // 마지막 요소를 모를때
+    $fruits.insertBefore($grape, $fruits.lastElementChild);
+
+
+
+
+
+  </script>
+  
+</body>
+</html>

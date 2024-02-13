@@ -20,6 +20,9 @@
 
   <script>
 
+    // id 가 주어지면 etElementById 를 사용하고
+    // class 가 주어지면 querySelector 를 사용하여 값을 얻자!
+
     //1. class="the-title"인 요소의 자식요소를
     //innerHTML을 사용하여 "<a href="#">요소 객체 조작</a>"로 교체.
     const $class = document.querySelector('.the-title');
@@ -32,6 +35,8 @@
     // const $text =  document.createElement('li');
     // $text.textContent = '리스트_2';
     // $list.replaceChild($text, $list.firstElementChild);
+
+    // class 대상이므로 querySelector를 사용
     document.querySelector('.obj1').textContent = '리스트_2';
 
 

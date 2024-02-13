@@ -19,7 +19,8 @@
     const $users = document.getElementById('users');
     
     // 디스트럭쳐링으로 li 나누기
-
+    // $users.children은 유사 배열이기 때문에 스프레드를 사용 하여 완전한 배열로 만들어 준다
+    // [...$users.children]
     const[$user1, $user2] = [...$users.children];
 
     /*
@@ -40,7 +41,7 @@
     $user2.dataset.role = 'anonymous';
     console.log($user2);
     $user2.dataset.userTelNumber = '010-1234-5678';
-
+    console.log($user2);
 
 
   </script>

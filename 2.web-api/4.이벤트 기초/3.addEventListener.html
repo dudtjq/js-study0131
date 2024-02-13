@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <button type="button" id="btn">클릭</button>
+
+
+  <script>
+
+    const $btn = document.getElementById('btn');
+
+    const helloHandler = () => alert('hello world!');
+
+
+    //addEventListener('이벤트 타입', 핸들러 -> 콜백)
+    $btn.addEventListener('click', function(){
+      alert('안녕하세요');
+    });
+
+    $btn.addEventListener('click', () => {
+      alert('못안녕해요');
+    });
+
+    $btn.addEventListener('click', helloHandler);
+
+    // 변수 이름을 가지고 있는 것만 삭제가 가능하다
+    // 익명 핸들러 같은 경우 지목을 할 수가 없기 때문에 삭제가 안된다.
+    $btn.removeEventListener('click', helloHandler);
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+    <!--
+        이벤트와 요소 취득 및 문법을 활용하여
+        카운트를 누적해서 올리거나 내려주세요.
+        0아래로는 내려가지 않게 하세요.
+    -->
+
+    <h2>자바스크립트 카운트</h2>
+    <input type="text" id="result" value="0" readonly>
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+
+
+  <script>
+
+    const $result = document.getElementById('result');
+    const $plus = document.getElementById('plus');
+    const $minus = document.getElementById('minus');
+
+
+    $plus.addEventListener('click', e =>{
+     
+     $result.value++;
+
+    });
+
+    $minus.addEventListener('click', e =>{
+
+      // type of를 확인한 결과 정수가 아닌 string으로 나옴
+      //console.log(typeof $result.value);
+
+      // $result.value 값이 string 으로 나오기 때문에 $result.value 앞에 +를
+      // 사용하여 정수로 만들어 준다. 
+      if(+$result.value === 0){
+        alert('마이너스는 안됩니다.');
+        return;
+      }
+
+      $result.value--;
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+</body>
+</html>

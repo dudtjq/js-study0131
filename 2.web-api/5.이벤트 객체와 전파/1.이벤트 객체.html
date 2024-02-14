@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <p>아무곳이나 클릭하세요!</p>
+  <input type="checkbox"> <br>
+  <em class="message"></em> <br>
+
+  <hr>
+
+  <input type="text" id="inputText">
+  <p class="msg"></p>
+
+
+<script>
+  const $em = document.querySelector('.message');
+  // 문서 전체에 이벤트 핸들러 등록
+
+  //이벤트 핸들러의 첫번째 인수로 이벤트에 관련된 다양한 정보가 들어있는
+  // 이벤트 객체가 자동 전달됨
+  // 핸들러 내에서 이벤트 객체를 사용하려면, 적당한 매개 변수를 선언해서 사용
+  // 
+
+  // document.addEventListener('click', function(e){
+
+  //   $em.textContent = `x좌표는 : ${e.offsetX}, y좌표 : ${e.offsetY}`;
+
+  // });
+
+
+  const $checkbox = document.querySelector('input[type=checkbox]');
+
+  document.addEventListener('change', function(e){
+    // 실제 이벤트가 발생한 요소 -> 이벤트 발생한 요소가 누구인지 파악하기 위해 많이 사용이 됨
+    //console.log(e.target);
+
+    // 체크박스 또는 radio 버튼의 체크 유무를 확인 하는 프로퍼티
+    if(e.target.checked){
+      $em.textContent = '체크됨';
+    }else{
+      $em.textContent = '체크 안됨';
+    }
+
+  });
+
+  ////////////////////////////////////////////////////////////////////////////
+
+  const $input = document.getElementById('inputText');
+  const $msg = document.querySelector('.msg');
+
+  $input.addEventListener('keyup', e => {
+
+    //console.log('keyup 이벤트 발생');
+    //console.log(`입력한 값은 ${e.target.value} 입니다`);
+    //console.log(e.keyCode);
+
+    if(e.keyCode === 13){ // keyup 한 자판이 엔터키니?
+      $msg.textContent = e.target.value;
+      e.target.value = ''; // 입력창 (e,target) 비우기
+    }else if(e.keyCode === 27){ // esc
+      e.target.value = '';
+    }
+
+  });
+
+
+
+</script>
+
+</body>
+</html>

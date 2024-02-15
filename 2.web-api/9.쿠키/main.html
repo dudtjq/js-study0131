@@ -21,6 +21,9 @@
 
     // 윈도우 이벤트 함수
     // onload: 윈도우 창이 모두 로딩된 후 바로 실행할 내용
+    
+    // 쿠키가 저장이 되어 있다면 더이상의 팝업이 뜨지 않고 
+    // 쿠키가 저장이 안되어 있다면 팝업이 재실행됨
     window.onload = function() {
       if(!getCookie('popup')){
         window.open('./popup.html', '메인 팝업창', 'width=500, height=500, top=200, left=200')

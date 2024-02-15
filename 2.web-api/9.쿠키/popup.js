@@ -13,6 +13,7 @@ function createCookie(name){
 
 function getCookie(name){
 
+  // cookie 부분에서 split진행할때 '; ' -> 세미클론 뒤에 띄어쓰기 꼭해줘야함
   const cookies = document.cookie.split('; ');
 
   for(let c of cookies){
@@ -22,6 +23,6 @@ function getCookie(name){
   }
 
   return false;
-  
+
 
 }

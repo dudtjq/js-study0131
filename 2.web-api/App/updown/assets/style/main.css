@@ -134,6 +134,22 @@ section.main .number-wrapper h2 em{
   background: blue;
 }
 
+/* 사용자가 아이콘 선택시 up or down 아이콘 애니메이션 */
+.result div.selected {
+  animation: jumping 0.3s infinite linear alternate;
+}
+@keyframes jumping {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+  100% {
+      transform: translateY(-20px);
+  }
+}
+
 #finish{
   width: 60%;
   height: 200px;
@@ -152,4 +168,45 @@ section.main .number-wrapper h2 em{
   opacity: 0;
   z-index: -100;
 }
+
+#finish.show {
+  animation: showUp 1s linear forwards;
+}
+@keyframes showUp {
+  0% {
+      opacity: 0;
+      top: -50%;
+  }
+  50% {
+      opacity: 0.5;
+      top: 0;
+  }
+  100% {
+      opacity: 1;
+      top: 50%;
+      z-index: 100;
+  }
+}
+
+/* 정답아이콘에 id="move"가 붙으면 아이콘이 커지면서
+움직이는 애니메이션 */
+.icon#move {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  z-index: 10;
+  border: 4px dashed #000;
+  animation: move 1s linear forwards;
+}
+@keyframes move {
+  0% {
+      top: 0;
+      transform: translateX(0) rotate(0) scale(1);
+  }
+  100% {
+      top: 10%;
+      transform: translateX(-50%) rotate(720deg) scale(2);
+  }
+}
+
 

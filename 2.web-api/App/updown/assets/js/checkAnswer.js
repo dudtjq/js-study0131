@@ -74,6 +74,7 @@ function currectAnswer($icon){
   $finish.classList.add('show');
   
   // 2. #numbers 클릭 이벤트 해제
+  const $numbers = document.getElementById('numbers');
   $numbers.onclick = null;
 
   // 3. 사용자가 선택한 아이콘에 id 'move' 추가

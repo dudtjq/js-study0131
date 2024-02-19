@@ -178,6 +178,7 @@ function changeCheckState($label){
     if(dataId === todos[i].id){
       // 논리 반전식을 대입(기존에 있던 값을 반대 값을 주기)
       // 요거 체크박스 수행 시 참고 할 것
+      // true false 이기 때문에 논리 반전을 사용할 수 있는 케이스
       todos[i].done = !todos[i].done;
     }
   }

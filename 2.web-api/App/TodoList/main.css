@@ -220,7 +220,7 @@ section.todo-template .content .todo-list .todo-list-item .checkbox {
   flex: 1;
 }
 
-section.todo-template .content .todo-list .todo-list-item .checkbox span .checked {
+section.todo-template .content .todo-list .todo-list-item .checkbox .checked {
   color: #ADB5BD;
   text-decoration: line-through;
 }
@@ -260,4 +260,23 @@ section.todo-template .content .todo-list .todo-list-item .modify {
 }
 section.todo-template .content .todo-list .todo-list-item .remove {  
   color: red;    
+}
+
+/* 삭제 모션 */
+.delMoving {
+  animation: delMove 1.5s ease-in-out;
+}
+@keyframes delMove {
+  0% {
+      background: orange;
+      transform: translateX(20px);
+  }
+  50% {
+      background: orangered;
+      transform: translateX(-500px);
+  } 
+  100% {
+      background: red;
+      transform: translateX(-2000px);
+  }
 }

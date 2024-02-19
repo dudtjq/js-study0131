@@ -1,25 +1,6 @@
 
 // 일정 데이터가 들어 있는 배열 선언
-const todos = [
-  {
-    id: 1,
-    text: '할 일 1',
-    done: false // 체크 박스를 클릭해서 할 일을 마쳤는지의 여부
-  },
-
-  {
-    id: 2,
-    text: '할 일 2',
-    done: false // 체크 박스를 클릭해서 할 일을 마쳤는지의 여부
-  },
-
-  {
-    id: 3,
-    text: '할 일 3',
-    done: false // 체크 박스를 클릭해서 할 일을 마쳤는지의 여부
-  },
-
-];
+const todos = [];
 
 // 화면에 표현할 li.todo-list-item 노드를 생성하는 함수 정의
 function makeNewTodoNode(newTodo){
@@ -145,9 +126,14 @@ function insertTodoData(){
 
 }
 
-function changeDone(){
-  
+// data-id 값으로 배열을 탐색하여 일치하는 객체가 들어있는 인덱스 반환
+function findIndexByDataId(dataId){
 
+  for(let i = 0; i < todos.length; i++){
+    if(dataId === todos[i].id){
+      return i;
+    }
+  }
 
 }
 
@@ -173,25 +159,92 @@ function changeCheckState($label){
   //data-id 얻어오는 방법
   // dataId가 스트링으로 오기 때문에 + 사용하여 정수로 변환
   const dataId = +$label.parentNode.dataset.id;
- 
-  for(let i = 0; i < todos.length; i++){
-    if(dataId === todos[i].id){
-      // 논리 반전식을 대입(기존에 있던 값을 반대 값을 주기)
-      // 요거 체크박스 수행 시 참고 할 것
-      // true false 이기 때문에 논리 반전을 사용할 수 있는 케이스
-      todos[i].done = !todos[i].done;
-    }
+  const index = findIndexByDataId(dataId);
+
+  // 논리 반전식을 대입(기존에 있던 값을 반대 값을 주기)
+  // 요거 체크박스 수행 시 참고 할 것
+  // true false 이기 때문에 논리 반전을 사용할 수 있는 케이스
+  todos[index].done = !todos[index].done;
+
+    
   }
+
+
+
+// 할 일 삭제 처리 함수 정의
+function removeTodoData($delTarget){
+
+  // 애니메이션 적용을 위해 클래스 이름을 추가(delMoving)
+  $delTarget.classList.add('delMoving');
+
+  // ul 안에 있는 li를 removeChild로 제거하기 전에 애니메이션 발동 및
+  // 배열 내부 객체 삭제가 진행될 수 있도록 시간을 일부러 지연
+  // 시간 지연은 1.5초 진행(window함수 참고)
+  setTimeout(() => {
+   document.querySelector('.todo-list').removeChild($delTarget);
+  }, 1500);
+
+
+  // 배열 내에 있는 객체도 삭제를 진행.
+  // 삭제되는 객체가 배열 안에 몇번째 인지를 확인 -> 할 일 완료 처리 함수쪽에 비슷한 로직이 있습니다.
+  // 함수화 시켜보세요.
+  // index 는 숫자로 들어가야 하기 떄문에 String 이 아닌 정수로 변환 한다
+  const index = findIndexByDataId(+$delTarget.dataset.id);
+  todos.splice(index, 1);
+  
   console.log(todos);
-
-
 
 
 }
 
+// 수정 모드 진입 이벤트 함수
+function enterModifyMode($modSpan){
+
+  // 수정모드 진입 버튼 교체 (lnr-undo -> lnr-checkmark-circle)
+  //$modSpan.classList.toggle('lnr-checkmark-circle');
+  $modSpan.classList.replace('lnr-undo', 'lnr-checkmark-circle');
+
+  // span.text 를 input 태그로 교체(replaceChild)
+  // input 태그에는 .modify-input을 추가, input에는 기존의 할 일 텍스트가 미리 작성 되어야 함
+  // 부모의 이전 형제 지목
+  const $label = $modSpan.parentNode.previousElementSibling;
+  // 속해 있는 마지막 요소 지목
+  const $textSpan = $label.lastElementChild;
+
+  const $modInput = document.createElement('input');
+  $modInput.classList.add('modify-input');
+  $modInput.setAttribute('value', $textSpan.textContent);// 기존 할 일 text를 input에   미리세팅
+  //                세롭게 추가   기존 것을 삭제
+  $label.replaceChild($modInput, $textSpan);
 
 
+}
 
+// 수정 완료 이벤트
+function modifyTodoData($modCompleteSpan){
+
+  //버튼을 원래대로 돌립니다. (lnr-undo)
+  $modCompleteSpan.classList.replace('lnr-checkmark-circle', 'lnr-undo');
+
+  // input을 다시 span.txt로 변경
+  const $label = $modCompleteSpan.parentNode.previousElementSibling;
+  // 수정이 확실해지기 때문에 input 지목
+  const $modInput = $label.lastElementChild;
+
+  const $textSpan = document.createElement('span');
+  $textSpan.textContent = $modInput.value;
+  $textSpan.classList.add('text')
+
+  $label.replaceChild($textSpan, $modInput);
+
+  // 배열 내의 id가 일치하는 객체를 찾아서 text 프로퍼티의 값을 수정된 값으로 변경
+  const idx = findIndexByDataId(+$label.parentNode.dataset.id);
+  todos[idx].text = $textSpan.textContent;
+
+  console.log(todos);
+
+
+}
 
 
 
@@ -226,7 +279,29 @@ function changeCheckState($label){
   
   // 할일 삭제 이벤트
 
+  $todoList.addEventListener('click', e =>{
+
+    if(!e.target.matches('.todo-list .remove span')){
+      return;
+    }
+
+    removeTodoData(e.target.parentNode.parentNode);// 이벤트가 발생한 곳의 조상을
+                                                  // 매개값으로 전달(li)
+
+  });
+
 
   // 할 일 수정 이벤트(수정 모드 진입, 수정 완료)
+  $todoList.addEventListener('click', e => {
+
+    if(e.target.matches('.todo-list .modify span.lnr-undo')){
+      enterModifyMode(e.target); // 수정모드 진입
+    }else if(e.target.matches('.todo-list .modify span.lnr-checkmark-circle')){
+      modifyTodoData(e.target); // 수정모드에서 수정을 확정지으려는 이벤트
+    }else{
+      return;
+    }
+
+  });
 
 })();

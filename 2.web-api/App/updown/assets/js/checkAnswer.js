@@ -77,7 +77,7 @@ function currectAnswer($icon){
   $numbers.onclick = null;
 
   // 3. 사용자가 선택한 아이콘에 id 'move' 추가
-   
+  $icon.setAttribute('id', 'move');
  
 
 }
